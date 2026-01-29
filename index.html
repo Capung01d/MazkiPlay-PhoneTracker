@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MazkiPlay - Phone Number Tracking | Red Team Pentest Tool</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo" onclick="tracker.clearAll()">
+                <div class="logo-icon"></div>
+                <div>
+                    <h1>MazkiPlay</h1>
+                    <div class="logo-tagline">Phone Number Tracking System</div>
+                </div>
+            </div>
+            <div class="status-bar">
+                <div class="status-item status-online">
+                    <i class="fas fa-wifi"></i>
+                    <span>API Live</span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Red Team Authorized</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="hero-section">
+            <h1 class="hero-title">🔍📱 Phone Intelligence Tracker</h1>
+            <p class="hero-subtitle">Advanced Red Team Phone Number OSINT & Geolocation System</p>
+        </section>
+
+        <div class="search-container">
+            <div class="input-group">
+                <input type="tel" class="phone-input" id="phoneInput" 
+                       placeholder="📱 Masukkan nomor: 085262965282 atau +6285262965282"
+                       maxlength="16">
+                <button class="track-btn" onclick="tracker.trackPhone()">
+                    <span class="loading-spinner" id="loadingSpinner" style="display: none;"></span>
+                    <i class="fas fa-search"></i>
+                    TRACK TARGET
+                </button>
+                <button class="clear-btn" onclick="tracker.clearResults()">
+                    <i class="fas fa-trash"></i> CLEAR
+                </button>
+            </div>
+        </div>
+
+        <div id="notification" class="notification"></div>
+
+        <div class="results-section" id="resultsSection" style="display: none;">
+            <div class="result-card">
+                <h3><i class="fas fa-mobile-alt"></i> Target Intelligence</h3>
+                <div class="result-item">
+                    <span class="result-label">📱 Phone Number:</span>
+                    <span class="result-value" id="phoneResult">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">📡 Carrier:</span>
+                    <span class="result-value" id="carrierResult">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">📍 Location:</span>
+                    <span class="result-value" id="locationResult">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">🗺️ Coordinates:</span>
+                    <span class="result-value" id="coordsResult">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">📡 Cell Tower:</span>
+                    <span class="result-value" id="cellTowerResult">-</span>
+                </div>
+            </div>
+            <div class="result-card risk-score">
+                <h3><i class="fas fa-chart-line"></i> Risk Assessment</h3>
+                <div class="risk-circle risk-medium" id="riskCircle">
+                    <div id="riskScore">0%</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">Tracking Accuracy</div>
+                </div>
+                <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                    Sources: <span id="sourcesResult">-</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="map"></div>
+
+        <div class="result-card">
+            <h3><i class="fas fa-terminal"></i> Pentest Log</h3>
+            <div id="log" class="log-container">🚀 MazkiPlay Tracking System Ready<br>📡 All APIs Online - Test: 085262965282</div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/tracker.js"></script>
+</body>
+</html>
